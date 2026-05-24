@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react"
+
 
 function App() {
   const [users, setUsers] = useState([])
@@ -5,7 +7,8 @@ function App() {
   useEffect(() => {
     const fetchUsers = async () => {
       const result = await fetch("http://ec2-98-81-133-119.compute-1.amazonaws.com:8000/test")
-      const data = await result.json()
+      const data = await result.json();
+      console.log(data)
       setUsers(data)
     }
     fetchUsers();
