@@ -9,7 +9,8 @@ function App() {
       const result = await fetch("http://ec2-98-81-133-119.compute-1.amazonaws.com:8000/test")
       const data = await result.json();
       console.log(data)
-      setUsers(data)
+      console.log(data.data)
+      setUsers(data.data)
     }
     fetchUsers();
   }, [])
