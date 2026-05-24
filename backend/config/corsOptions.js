@@ -1,9 +1,10 @@
 const allowedOrigins = [
-    'http://ec2-98-81-133-119.compute-1.amazonaws.com'
+    '*'
 ]
 
 const corsOptions = {
     origin: (origin, callback) => {
+	console.log(origin)
         if (allowedOrigins.indexOf(origin) !== -1 || !origin){
             callback(null, true)
         } else {
