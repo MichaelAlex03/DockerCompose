@@ -1,5 +1,5 @@
 const allowedOrigins = [
-    '*'
+    'http://ec2-98-81-133-119.compute-1.amazonaws.com'
 ]
 
 const corsOptions = {
