@@ -11,9 +11,9 @@ services:
   frontend:
     build:
       context: ./frontend/my-react-app
-      target: dev
+      target: runner
     ports:
-      - 80:5173
+      - 80:80
     volumes:
       - ./frontend/my-react-app:/app
       - /app/node_modules # so you dont overwrite the node_modules on your m
