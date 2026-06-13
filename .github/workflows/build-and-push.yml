@@ -68,7 +68,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "docker-compose.prod.yml,observability/,backend/db/init/"
-          target: "/"
+          target: "/app"
 
       - name: Pull and restart on EC2
         uses: appleboy/ssh-action@v1.0.3
