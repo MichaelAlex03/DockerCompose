@@ -67,7 +67,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "docker-compose.prod.yml,observability/,backend/db/init/"
+          source: "compose.prod.yml,observability/,backend/db/init/"
           target: "/app"
 
       - name: Pull and restart on EC2
