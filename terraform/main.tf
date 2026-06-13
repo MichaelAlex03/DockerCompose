@@ -63,7 +63,7 @@ resource "aws_security_group" "web" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["70.171.83.100/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
@@ -118,6 +118,11 @@ resource "aws_key_pair" "main" {
   public_key = file("~/.ssh/devops-project-4.pub")
 }
 
+resource "aws_key_pair" "dev" {
+  key_name = "development_ssh"
+  public_key = file("~/.ssh/dockercomposeproj-deploy.pub")
+}       
+
 # Pulling in AMI which EC2 is built from
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -141,8 +146,8 @@ resource "aws_instance" "web" {
   instance_type          = "t3.micro"
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.web.id]
-  key_name               = aws_key_pair.main.key_name
-
+  key_name               = aws_key_pair.dev.key_name
+  
   tags = {
     Name = "devops-project-4-web"
   }
